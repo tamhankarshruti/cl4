@@ -57,7 +57,7 @@ plt.scatter(
     centers[:, 0],
     centers[:, 1],
     marker='*',
-    s=200
+    s=200    #size of the marker
 )
 
 plt.title("K-Means Clustering")
