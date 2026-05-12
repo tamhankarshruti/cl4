@@ -1,0 +1,182 @@
+# ---------------------------------------------------------
+# MapReduce Program for Titanic Data Analysis
+# ---------------------------------------------------------
+# Tasks:
+# 1. Find average age of dead males
+# 2. Find number of dead females in each class
+# ---------------------------------------------------------
+
+import csv
+
+# ---------------------------------------------------------
+# Mapper Function
+# ---------------------------------------------------------
+#Processes each passenger record:
+def mapper(file_name):
+
+    male_age = []
+
+    female_class = []
+
+    with open(file_name, "r") as file:
+
+        reader = csv.DictReader(file) #Reads Titanic dataset (titanic.csv)
+                                     #Converts each row into a dictionary format
+
+        for row in reader:
+
+            # Convert values
+            survived = int(row['survived'])
+
+            sex = row['sex']
+
+            pclass = row['pclass']
+
+            age = row['age']
+
+            # -------------------------------------------------
+            # Dead Male Average Age -Stores their ages for averaging
+            # -------------------------------------------------
+
+            if survived == 0 and sex == "male":
+
+                if age != "":
+
+                    male_age.append(("male_age", float(age)))
+
+            # -------------------------------------------------
+            # Dead Females in Each Class -Stores (class, 1) for counting
+            # -------------------------------------------------
+
+            if survived == 0 and sex == "female":
+
+                female_class.append((pclass, 1))
+
+    return male_age, female_class
+
+
+# ---------------------------------------------------------
+# Reducer Function
+# ---------------------------------------------------------
+
+def reducer(male_age, female_class):
+
+    # -----------------------------------------------------
+    # Average Age of Dead Males
+    # -----------------------------------------------------
+
+    total_age = 0
+    count = 0
+
+    for key, age in male_age:
+
+        total_age += age
+        count += 1
+
+    average_age = total_age / count
+
+    # -----------------------------------------------------
+    # Dead Females Count by Class
+    # -----------------------------------------------------
+
+    female_count = {}
+
+    for pclass, value in female_class:
+
+        if pclass in female_count:
+            female_count[pclass] += value #Groups and counts dead females by passenger class
+
+        else:
+            female_count[pclass] = value
+
+    return average_age, female_count
+#male_age → list of ages of dead males, female_class → list of dead females per class
+
+# ---------------------------------------------------------
+# Main Program
+# ---------------------------------------------------------
+
+male_age, female_class = mapper("titanic.csv")
+
+average_age, female_count = reducer(
+    male_age,
+    female_class
+)
+
+# ---------------------------------------------------------
+# Output -Computes average age of dead males, females
+# ---------------------------------------------------------
+
+print("Average Age of Dead Males:")
+print(round(average_age, 2))
+
+print("\nDead Females in Each Class:")
+
+for pclass, count in female_count.items():
+
+    print("Class", pclass, ":", count)
+
+
+
+
+
+
+1. **What is MapReduce?**
+   MapReduce is a data processing model for handling large datasets using mapper and reducer functions.
+
+2. **What is the objective of this program?**
+   To analyze Titanic data and compute specific statistics.
+
+3. **Which dataset is used here?**
+   Titanic dataset is used.
+
+4. **What is the mapper function?**
+   Mapper extracts and filters required data from the dataset.
+
+5. **What is the reducer function?**
+   Reducer aggregates and computes final results.
+
+6. **What is the first task in this code?**
+   To find average age of dead males.
+
+7. **What is the second task?**
+   To find number of dead females in each class.
+
+8. **What does survived == 0 mean?**
+   It means the passenger did not survive.
+
+9. **Why is age converted to float?**
+   To perform numerical calculations.
+
+10. **Why is DictReader used?**
+    It reads CSV data as dictionary format.
+
+11. **What does male_age list store?**
+    It stores ages of dead male passengers.
+
+12. **What does female_class store?**
+    It stores count of dead females per class.
+
+13. **How is average age calculated?**
+    By dividing total age by number of males.
+
+14. **What is pclass?**
+    It represents passenger class (1st, 2nd, 3rd).
+
+15. **Why is dictionary used in reducer?**
+    To store class-wise female counts.
+
+16. **What is Map phase?**
+    It filters and prepares required data.
+
+17. **What is Reduce phase?**
+    It aggregates filtered data into results.
+
+18. **Why is this called data analysis?**
+    Because it extracts insights from dataset.
+
+19. **What type of problem is this?**
+    It is a statistical data processing problem.
+
+20. **What is the final output?**
+    Average age of dead males and class-wise dead female count.

@@ -1,0 +1,115 @@
+
+# Data Clustering using K-Means Algorithm
+
+# Import Libraries
+from sklearn.datasets import load_iris
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+
+# Step 1: Load Dataset
+
+iris = load_iris()
+
+X = iris.data[:, :2]   #Selects first two features for clustering.
+
+
+# Step 2: Create K-Means Model
+
+kmeans = KMeans(
+    n_clusters=3,
+    random_state=42
+)
+
+
+# Step 3: Train Model
+
+kmeans.fit(X)
+
+
+# Step 4: Predict Cluster Labels
+
+labels = kmeans.predict(X)
+
+# Cluster Centers
+centers = kmeans.cluster_centers_
+
+
+# Step 5: Output
+
+print("Cluster Labels:")
+print(labels)
+
+print("\nCluster Centers:")
+print(centers)
+
+
+# Step 6: Visualization
+# clustered data points, 
+
+plt.scatter(
+    X[:, 0],
+    X[:, 1],
+    c=labels
+)
+#cluster centers
+plt.scatter(
+    centers[:, 0],
+    centers[:, 1],
+    marker='*',
+    s=200
+)
+
+plt.title("K-Means Clustering")
+
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+
+plt.show()
+
+
+
+
+
+
+
+What is K-Means Clustering?
+K-Means is an unsupervised machine learning clustering algorithm.
+What is the objective of this code?
+To group similar data points into clusters.
+Which dataset is used in this code?
+Iris flower dataset is used.
+What is clustering?
+Clustering groups similar data points together.
+What type of learning is K-Means?
+Unsupervised learning.
+What does n_clusters=3 mean?
+It creates 3 clusters in the dataset.
+What is a cluster centroid?
+It is the center point of a cluster.
+What does kmeans.fit() do?
+It trains the K-Means model.
+What does kmeans.predict() do?
+It assigns cluster labels to data points.
+What are labels in K-Means?
+Labels indicate cluster membership of data points.
+Why are only first two features used?
+To simplify clustering and visualization.
+What is random_state used for?
+It ensures consistent results every run.
+What is scatter plot used for?
+To visualize clustered data points.
+Why are cluster centers displayed?
+To show the centroid of each cluster.
+What is the role of plt.scatter()?
+It plots data points on the graph.
+What are applications of K-Means?
+Customer segmentation, image compression, and pattern recognition.
+What is the difference between classification and clustering?
+Classification uses labels, clustering does not.
+How does K-Means form clusters?
+By grouping points nearest to centroids.
+What is the main limitation of K-Means?
+It requires predefined number of clusters.
+What is the final output of this code?
+Cluster labels, cluster centers, and cluster visualization.

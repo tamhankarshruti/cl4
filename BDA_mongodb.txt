@@ -1,0 +1,112 @@
+3. Step-by-Step Installation (Windows)
+ Download the MongoDB Community Server (.msi file).
+ Run the installer and select "Complete Setup".
+ Enable the option "Install MongoDB as a Service".
+ Add the following path to System Environment Variables:
+C:\Program Files\MongoDB\Server\<version>\bin
+ Open Command Prompt and type mongosh to verify installation. 
+
+4. Implementation
+
+A. Database & Collection Creation
+use StudentDB
+db.createCollection("students")
+
+
+B. Create (Insert Document)
+db.students.insertOne({
+ name: "Kavita",
+ roll_no: 101,
+ dept: "Big Data",
+ marks: 85
+})
+
+db.students.insertMany([
+ { name: "Rahul", roll_no: 102, dept: "AI", marks: 78 },
+ { name: "Sneha", roll_no: 103, dept: "Big Data", marks: 92 }
+])
+
+
+C. Read (Query Document)
+db.students.find().pretty()
+db.students.find({ dept: "Big Data" })
+db.students.find({ marks: { $gt: 80 } })
+
+
+D. Update Document
+db.students.updateOne(
+ { roll_no: 101 },
+ { $set: { marks: 90 } }
+)
+
+db.students.updateMany(
+ { dept: "AI" },
+ { $set: { status: "Verified" } }
+)
+
+
+E. Delete Document
+db.students.deleteOne({ roll_no: 102 })
+db.students.deleteMany({ marks: { $lt: 40 } })
+
+
+
+1. **What is MongoDB?**
+   MongoDB is a NoSQL database used for storing JSON-like documents.
+
+2. **What is the use of MongoDB Community Server?**
+   It provides the free version of MongoDB for local installation.
+
+3. **What is mongosh?**
+   mongosh is the MongoDB shell used to run database commands.
+
+4. **Why do we add MongoDB to environment variables?**
+   To access MongoDB commands from any directory in CMD.
+
+5. **What is a database in MongoDB?**
+   A database is a container for collections.
+
+6. **What is a collection?**
+   A collection is a group of documents in MongoDB.
+
+7. **How do you create a database in MongoDB?**
+   Using `use DatabaseName` command.
+
+8. **How do you create a collection?**
+   Using `db.createCollection()` command.
+
+9. **What is a document in MongoDB?**
+   A document is a record stored in JSON-like format.
+
+10. **What is insertOne() used for?**
+    It inserts a single document into a collection.
+
+11. **What is insertMany() used for?**
+    It inserts multiple documents at once.
+
+12. **What does find() do?**
+    It retrieves all documents from a collection.
+
+13. **What does pretty() do?**
+    It formats output in readable structure.
+
+14. **What is a query in MongoDB?**
+    A query is used to retrieve specific data.
+
+15. **What does $gt mean?**
+    It means greater than condition.
+
+16. **What does updateOne() do?**
+    It updates a single document.
+
+17. **What does $set operator do?**
+    It updates specific fields in a document.
+
+18. **What does updateMany() do?**
+    It updates multiple documents matching condition.
+
+19. **What does deleteOne() do?**
+    It deletes a single matching document.
+
+20. **What does deleteMany() do?**
+    It deletes multiple documents matching condition.

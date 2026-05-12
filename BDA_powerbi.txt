@@ -1,0 +1,109 @@
+1. Pie Chart — Male vs Female Passengers
+
+Fields
+Area	Column
+Legend	sex
+Values	sex → Count
+
+Shows:
+number of male passengers
+number of female passengers
+
+2. Clustered Bar Chart — Passenger Class Distribution
+
+Fields
+Area	Column
+Axis	class
+Values	class → Count
+
+Shows passenger distribution in:
+First Class
+Second Class
+Third Class
+
+3. Column Chart — Survival by Gender
+
+Fields
+Area	Column
+Axis	sex
+Values	survived → Sum
+
+Shows:
+how many males survived
+how many females survived
+
+4. Line Chart — Age vs Fare
+Fields
+Area	Column
+X-Axis	age
+Y-Axis	fare
+
+Shows relationship between:
+passenger age
+ticket fare
+
+Add One Slicer
+
+Field
+Area	Column
+Field	class
+
+Now dashboard becomes interactive.
+
+Dashboard Arrangement
+Pie Chart          Bar Chart
+
+Column Chart       Line Chart
+
+Slicer at Left/Top
+
+Story / Insights for Titanic Dataset
+
+Add - Insert → Text Box
+
+Write this story:
+Titanic data analysis shows that most passengers belonged to Third Class. 
+Female passengers had a higher survival rate compared to male passengers. 
+First Class passengers had better survival chances due to priority rescue access. 
+The fare distribution indicates that higher ticket fares were generally associated with higher class passengers.
+
+What is Power BI?
+Power BI is a business intelligence and data visualization tool.
+What is a dashboard in Power BI?
+A dashboard is a collection of visualizations on a single page.
+What is data visualization?
+Data visualization represents data graphically using charts and graphs.
+What is a slicer in Power BI?
+A slicer is used to filter report data interactively.
+Which dataset was used in this experiment?
+Titanic dataset was used.
+What does the survived column represent?
+It indicates whether a passenger survived or not.
+What does pclass mean in Titanic dataset?
+It represents passenger class.
+Why is a Pie Chart used?
+Pie chart shows percentage distribution of categories.
+Why is a Bar Chart used?
+Bar chart is used for comparison between categories.
+What is the use of Line Chart?
+Line chart shows trends or relationships in data.
+What is the purpose of filters in Power BI?
+Filters display only selected data.
+What insight was observed from Titanic data?
+Female passengers had higher survival rates.
+What is the function of the Values field in charts?
+It determines numerical calculations in visualization.
+What is meant by interactive dashboard?
+Charts update automatically based on user selections.
+Which chart was used for gender distribution?
+Pie Chart was used.
+What does the fare column represent?
+It represents ticket price paid by passengers.
+Why are dashboards important?
+Dashboards help in quick data analysis and decision-making.
+What is data analysis?
+Data analysis means extracting useful information from data.
+Which visualization compared survival by gender?
+Clustered Column Chart compared survival by gender.
+What is the advantage of Power BI?
+It provides interactive and easy-to-understand visual reports.

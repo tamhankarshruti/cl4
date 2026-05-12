@@ -1,0 +1,150 @@
+1. EXTRACT (Import Titanic Dataset)
+Step 1
+Open Power BI Desktop.
+
+Step 2
+Home → Get Data → Text/CSV
+
+Step 3
+Select:
+titanic.csv
+
+Step 4
+Transform Data
+This opens Power Query Editor.
+
+2. TRANSFORM (Clean and Modify Data)
+Now perform transformations.
+
+A) Remove Null Values
+Steps
+Select column:
+age
+Click filter dropdown.
+Uncheck:
+null
+
+B) Change Data Types
+Example
+
+For:
+age
+fare
+Set datatype as:
+Decimal Number
+
+Steps
+Select column
+Right click
+Change Type
+
+C) Rename Columns (Optional)
+Example:
+pclass → Passenger Class
+
+D) Remove Unnecessary Columns
+Example:
+deck
+alone
+Steps
+Right click column
+
+Click:
+Remove
+
+E) Create New Column
+Example: Survival Status
+Steps
+Click:
+Add Column → Conditional Column
+Create:
+If survived	Then
+1	Survived
+0	Dead
+
+3. LOAD (Load Cleaned Data)
+After transformations:
+Click:
+Close & Apply
+Now cleaned data loads into Power BI.
+
+4. CREATE VISUALIZATIONS
+
+Using previous Titanic columns.
+
+Chart 1 — Pie Chart (Gender Distribution)
+Area	Column
+Legend	sex
+Values	sex → Count
+Chart 2 — Bar Chart (Passenger Class)
+Area	Column
+Axis	class
+Values	class → Count
+Chart 3 — Column Chart (Survival by Gender)
+Area	Column
+Axis	sex
+Values	survived → Sum
+Chart 4 — Line Chart (Age vs Fare)
+Area	Column
+X-Axis	age
+Y-Axis	fare
+5. ADD SLICER
+Visualization
+
+Choose:
+
+Slicer
+Field - class
+
+Now dashboard becomes interactive.
+
+6. CREATE DASHBOARD
+
+7. CREATE STORY / INSIGHTS
+
+Most passengers belonged to Third Class.
+Female passengers had a higher survival rate.
+Higher fare passengers generally belonged to upper classes.
+Passenger class strongly affected survival chances.
+
+
+What does ETL stand for?
+ETL stands for Extract, Transform, and Load.
+What is the purpose of ETL?
+ETL is used to collect, clean, and load data for analysis.
+Which tool was used for ETL and visualization?
+Microsoft Power BI was used.
+Which dataset was used in this experiment?
+Titanic dataset was used.
+What happens in the Extract phase?
+Data is imported from external sources.
+What happens in the Transform phase?
+Data is cleaned and modified.
+What happens in the Load phase?
+Processed data is loaded into Power BI for analysis.
+What is Power Query Editor?
+It is a tool used for data transformation in Power BI.
+Why are null values removed?
+To improve data quality and accuracy.
+Why are data types changed during transformation?
+To ensure correct calculations and analysis.
+What is a dashboard?
+A dashboard is a collection of visual reports on one page.
+What is a slicer in Power BI?
+A slicer is an interactive filter for reports.
+Which chart was used for gender distribution?
+Pie Chart was used.
+Which chart was used for survival analysis?
+Clustered Column Chart was used.
+What does the survived column indicate?
+It shows whether a passenger survived or died.
+What does the class column represent?
+It represents passenger travel class.
+Why is data visualization important?
+It helps in easy understanding and analysis of data.
+What insight was obtained from Titanic analysis?
+Female passengers had higher survival rates.
+What is the advantage of Power BI dashboards?
+They provide interactive and real-time analysis.
+What is the role of transformation in ETL?
+Transformation converts raw data into useful formatted data.

@@ -1,0 +1,114 @@
+
+# Data Classification using Logistic Regression
+
+# Import Libraries
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import ( accuracy_score, precision_score, confusion_matrix )
+
+
+# Step 1: Load Dataset
+
+iris = load_iris()
+X = iris.data      # Features
+y = iris.target    # Target labels
+
+
+# Step 2: Split Dataset
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.3,
+    random_state=42
+)
+
+
+# Step 3: Create Logistic Regression Model
+
+model = LogisticRegression(max_iter=200)
+
+
+# Step 4: Train Model
+
+model.fit(X_train, y_train)
+
+
+# Step 5: Prediction
+
+y_pred = model.predict(X_test)
+
+
+# Step 6: Calculate Accuracy
+
+accuracy = accuracy_score(y_test, y_pred)
+
+precision = precision_score(
+    y_test,
+    y_pred,
+    average='macro'
+)
+
+cm = confusion_matrix(y_test, y_pred)
+
+
+# Step 7: Output
+
+print("Actual Values:")
+print(y_test)
+
+print("\nPredicted Values:")
+print(y_pred)
+
+print("\nAccuracy:", round(accuracy * 100, 2), "%")
+
+print("\nPrecision:", round(precision * 100, 2), "%")
+
+print("\nConfusion Matrix:")
+print(cm)
+
+
+
+
+
+What is Logistic Regression?
+Logistic Regression is a supervised machine learning classification algorithm.
+What is the objective of this code?
+To classify Iris flowers into different categories.
+Which dataset is used in this code?
+Iris flower dataset is used.
+What are features in the Iris dataset?
+Sepal length, sepal width, petal length, and petal width.
+What is the target variable?
+The flower class labels.
+What is supervised learning?
+It is learning using labeled data.
+Why is train_test_split() used?
+To divide data into training and testing sets.
+What is training data?
+Data used to train the model.
+What is testing data?
+Data used to evaluate model performance.
+What does model.fit() do?
+It trains the Logistic Regression model.
+What does model.predict() do?
+It predicts output classes for test data.
+What is accuracy?
+Accuracy measures overall correct predictions.
+What is precision?
+Precision measures correctness of positive predictions.
+What is confusion matrix?
+It shows actual vs predicted classifications.
+What does max_iter=200 mean?
+It sets maximum training iterations.
+What is classification in machine learning?
+Classification predicts categorical outputs.
+What type of learning is Logistic Regression?
+Supervised learning.
+Why is Logistic Regression called regression?
+Because it uses a regression-based mathematical model for classification.
+What are applications of Logistic Regression?
+Spam detection, disease prediction, and classification tasks.
+What is the final output of this code?
+Predicted classes, accuracy, precision, and confusion matrix.

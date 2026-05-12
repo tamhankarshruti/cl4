@@ -1,0 +1,121 @@
+
+# MapReduce Program to Find Frequency of a Given Word
+
+
+# Mapper Function - Reads each line from the file.
+#Splits lines into words using split().
+#Compares every word with the target word.
+#If matched, emits:
+def mapper(lines, target_word):
+    mapped = []
+    for line in lines:
+        words = line.strip().split()
+        for word in words:
+
+            # Convert to lowercase for accurate comparison
+            if word.lower() == target_word.lower():
+
+                mapped.append((target_word, 1))
+
+    return mapped
+
+
+# Reducer Function - Adds all values from mapper output.
+# Calculates total frequency of the target word.
+def reducer(mapped_data):
+    count = 0
+    for word, value in mapped_data:
+        count += value
+    return count
+
+
+
+# Read Input File
+with open("input.txt", "r") as file:
+    lines = file.readlines()
+
+
+# Target Word
+target_word = input("Enter word to search: ")
+
+
+# Map Phase - Generates intermediate key-value pairs for matching words.
+
+mapped_data = mapper(lines, target_word)
+print("\nMapper Output:")
+print(mapped_data)
+
+
+# Reduce Phase - Counts total occurrences of the target word.
+
+frequency = reducer(mapped_data)
+
+
+print("\nWord Frequency:")
+print(target_word, ":", frequency)
+
+
+
+
+
+
+
+1. **What is MapReduce?**
+   MapReduce is a programming model for processing large datasets.
+
+2. **What is the objective of this code?**
+   To find the frequency of a given word in a file.
+
+3. **What is the role of mapper function?**
+   Mapper generates key-value pairs for matching words.
+
+4. **What is the role of reducer function?**
+   Reducer calculates the total word count.
+
+5. **What is the target word?**
+   The word whose frequency is searched in the file.
+
+6. **Why is split() used in mapper?**
+   It separates lines into individual words.
+
+7. **Why is lower() used in comparison?**
+   It enables case-insensitive word matching.
+
+8. **What does mapper output?**
+   It outputs `(word, 1)` pairs.
+
+9. **What is a key-value pair?**
+   It is a structure like `(word, count)`.
+
+10. **Why is value initialized as 1?**
+    Because each occurrence counts once.
+
+11. **What does reducer return?**
+    It returns total frequency of the target word.
+
+12. **What is input.txt?**
+    It is the input text file being processed.
+
+13. **What does readlines() do?**
+    It reads all lines from the file.
+
+14. **What is Map phase?**
+    It transforms input data into intermediate pairs.
+
+15. **What is Reduce phase?**
+    It aggregates intermediate data into final output.
+
+16. **Why is MapReduce useful?**
+    It efficiently processes large-scale data.
+
+17. **What type of processing is used here?**
+    Text processing.
+
+18. **Where is MapReduce commonly used?**
+    Hadoop and big data systems.
+
+19. **What happens if the word is not found?**
+    Frequency becomes 0.
+
+20. **What is the final output of this code?**
+    The frequency count of the searched word.

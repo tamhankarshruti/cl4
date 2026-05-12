@@ -1,0 +1,120 @@
+
+# MapReduce Program to Find Grades of Students
+
+# Grade Calculation Function
+def calculate_grade(marks):
+
+    if marks >= 90:
+        return "A"
+
+    elif marks >= 75:
+        return "B"
+
+    elif marks >= 50:
+        return "C"
+
+    else:
+        return "Fail"
+
+
+#Mapper Function - Reads each line from the file.
+#Splits student name and marks.
+#Calculates grade using calculate_grade().
+#Creates key-value pairs:
+
+def mapper(lines):
+
+    mapped = []
+
+    for line in lines:
+
+        # Split student name and marks
+        data = line.strip().split()
+
+        name = data[0]
+        marks = int(data[1])
+
+        grade = calculate_grade(marks)
+
+        mapped.append((name, grade))
+
+    return mapped
+
+
+#reducer function - Stores final student grades in a dictionary
+
+def reducer(mapped_data):
+    result = {}
+
+    for name, grade in mapped_data:
+        result[name] = grade
+    return result
+
+
+
+# Read Input File
+
+with open("students.txt", "r") as file:
+    lines = file.readlines()
+
+# Map phase - Generates (student, grade) pairs.
+mapped_data = mapper(lines)
+
+print("Mapper Output:")
+print(mapped_data)
+
+
+# Reduce Phase - Produces final grade results.
+reduced_data = reducer(mapped_data)
+
+
+print("\nStudent Grades:")
+
+for name, grade in reduced_data.items():
+    print(name, ":", grade)
+
+
+
+
+
+
+What is MapReduce?
+MapReduce is a model for processing and analyzing data.
+What is the objective of this code?
+To calculate grades of students from marks data.
+What is the role of calculate_grade() function?
+It assigns grades based on marks.
+What grade is assigned for marks ≥ 90?
+Grade A.
+What grade is assigned for marks between 75 and 89?
+Grade B.
+What grade is assigned for marks between 50 and 74?
+Grade C.
+What grade is assigned for marks below 50?
+Fail.
+What is the role of mapper function?
+Mapper creates (name, grade) key-value pairs.
+What is the role of reducer function?
+Reducer stores final student grades.
+What does split() do in mapper?
+It separates student name and marks.
+Why is int() used for marks?
+To convert marks from string to integer.
+What is a key-value pair in this code?
+(student_name, grade).
+What is students.txt?
+It is the input file containing student data.
+What does readlines() do?
+It reads all lines from the file.
+What is the Map phase?
+It processes input and generates intermediate pairs.
+What is the Reduce phase?
+It generates final grade results.
+What data structure is used in reducer?
+Dictionary.
+What type of processing is performed here?
+Student grade classification.
+Why is MapReduce useful?
+It simplifies large-scale data processing.
+What is the final output of this program?
+Student names with their corresponding grades.

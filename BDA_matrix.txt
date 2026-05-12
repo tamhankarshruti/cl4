@@ -1,0 +1,136 @@
+
+# Matrix Multiplication using MapReduce
+
+# Matrix A
+A = [
+    [1, 2],
+    [3, 4]
+]
+
+# Matrix B
+B = [
+    [5, 6],
+    [7, 8]
+]
+
+
+# Mapper Function - Performs multiplication of matrix elements
+# Generates intermediate key-value pairs:
+
+def mapper(A, B):
+
+    mapped = []
+
+    rows_A = len(A)
+    cols_A = len(A[0])
+
+    rows_B = len(B)
+    cols_B = len(B[0])
+
+    # Matrix Multiplication Mapping 
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                value = A[i][k] * B[k][j] # Calculates multiplication of corresponding elements
+                mapped.append(((i, j), value)) #(i, j) → position in result matrix
+                                               #value → partial multiplication result
+    return mapped
+
+
+
+# Reducer Function - Groups same matrix positions
+# Adds partial values to get final matrix element
+
+def reducer(mapped_data):
+    result = {}
+    for key, value in mapped_data:
+        if key in result:
+            result[key] += value
+        else:
+            result[key] = value
+
+    return result
+
+
+
+# Map Phase -Produces intermediate multiplication results
+
+mapped_data = mapper(A, B)
+
+print("Mapper Output:")
+
+for item in mapped_data:
+    print(item)
+
+
+# Reduce Phase -Calculates final values of the result matrix
+
+reduced_data = reducer(mapped_data)
+
+
+# Construct Final Matrix
+
+rows = len(A)
+cols = len(B[0])
+
+result_matrix = [
+    [0 for j in range(cols)]
+    for i in range(rows)
+]
+
+for (i, j), value in reduced_data.items():
+
+    result_matrix[i][j] = value   #Stores reduced values into the final matrix
+
+
+print("\nResultant Matrix:")
+
+for row in result_matrix:
+    print(row)
+
+
+
+
+
+
+
+What is MapReduce?
+MapReduce is a programming model for processing large data.
+What is the objective of this code?
+To perform matrix multiplication using MapReduce.
+What is matrix multiplication?
+It combines two matrices by row-column multiplication.
+What is Matrix A in this code?
+It is the first input matrix.
+What is Matrix B in this code?
+It is the second input matrix.
+What is the role of mapper function?
+Mapper generates partial multiplication results.
+What is the role of reducer function?
+Reducer sums partial results for each matrix position.
+What does ((i, j), value) represent?
+It represents matrix position and its partial value.
+What are i, j, and k in matrix multiplication?
+i = row index, j = column index, k = common dimension index.
+What does A[i][k] * B[k][j] do?
+It multiplies corresponding matrix elements.
+Why are nested loops used?
+To traverse rows and columns of matrices.
+What is the purpose of cols_A and cols_B?
+They store number of columns in matrices.
+What is the Map phase?
+It generates intermediate multiplication pairs.
+What is the Reduce phase?
+It combines partial values into final results.
+Why is dictionary used in reducer?
+To store summed matrix values by position.
+What is the resultant matrix?
+It is the final multiplied matrix.
+What is the condition for matrix multiplication?
+Columns of first matrix must equal rows of second matrix.
+Why is MapReduce useful for matrix multiplication?
+It enables parallel computation of large matrices.
+Where is matrix multiplication used?
+Machine learning, graphics, and scientific computing.
+What is the final output of this code?
+The multiplied resultant matrix.
