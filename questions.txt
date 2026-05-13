@@ -1,0 +1,20 @@
+5. Perform the data classification algorithm using any Classification algorithm
+
+6. Perform the data clustering algorithm using any Clustering algorithm
+
+2. Develop a MapReduce program to calculate the frequency of a given word in a given file
+
+4. Develop a MapReduce program to find the grades of students.
+
+3. Implement Matrix Multiplication using Map-Reduce
+
+5. Develop a MapReduce program to analyze Titanic ship data and to find the average age of the
+people (only male) who died in the tragedy. How many persons are dead in each class (only
+female).
+
+Mongo DB: Installation and Creation of database and Collection CRUD Document: Insert, Query,
+Update and Delete Document.
+
+Visualization: Connect to data, Build Charts and Analyze Data, Create Dashboard, Create Stories using Tableau/PowerBI. 
+
+Data Visualization from Extraction Transformation and Loading (ETL) Process
